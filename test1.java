@@ -28,6 +28,7 @@ public class test1 extends JFrame {
 
 	}
 
+	// 보더레이아웃으로 북쪽,센터쪽으로 나누어서 설계 북쪽은 입력창과 결과가 나오는 칸들
 	void showNorth() {
 		JPanel p1 = new JPanel();// 식
 		JPanel p2 = new JPanel();// 입력칸
@@ -36,6 +37,8 @@ public class test1 extends JFrame {
 		JPanel p5 = new JPanel();// 8진수
 		JPanel p6 = new JPanel();// 2진수
 		JPanel panel = new JPanel(new GridLayout(6, 0));
+		// 지금까지쓴 식들과 버튼을 통해 입력할수있는 입력칸,결과를 16진수,10진수,8,2진수로 볼수있게 페널을 6개 만듬
+		// 2024-10-17 : 최초생성
 
 		JLabel l1 = new JLabel("식");
 		JTextField t1 = new JTextField(25);
@@ -54,6 +57,9 @@ public class test1 extends JFrame {
 		JLabel l6 = new JLabel("2진수");
 		JTextField t6 = new JTextField(25);
 		t6.setEnabled(false);// 입력불가능
+
+		// 입력칸에만 입력가능하게 해놓고 나머지 칸들은 입력 불가능
+		// 2024-10-17 : 최초생성
 
 		p1.add(l1);
 		p1.add(t1);
@@ -76,6 +82,8 @@ public class test1 extends JFrame {
 		panel.add(p6);
 
 		add(panel, BorderLayout.NORTH);
+		// 보더 레이아웃 북쪽으로
+		// 2024-10-17 : 최초생성
 
 	}
 
@@ -107,6 +115,9 @@ public class test1 extends JFrame {
 
 		JPanel panel = new JPanel(new GridLayout(4, 6));
 
+		// 24개의 버튼(숫자와 연산키 넣고 4행6열로 만든다)
+		// 2024-10-17 : 최초생성
+
 		panel.add(b1);
 		panel.add(b2);
 		panel.add(b3);
@@ -133,6 +144,8 @@ public class test1 extends JFrame {
 		panel.add(b24);
 
 		this.add(panel, BorderLayout.CENTER);
+		// 보더레이아웃은 센터로 해서 만든다
+		// 2024-10-17 : 최초생성
 
 	}
 
