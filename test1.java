@@ -2,6 +2,8 @@ package makingcomputer01;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,14 +16,13 @@ import javax.swing.JTextField;
 // 결과화면5개
 
 public class test1 extends JFrame {
+	private JTextField t2; // 입력칸을 멤버 변수로 선언
 
 	test1() {
 		setTitle("계산기");
-
 		setLayout(new BorderLayout(10, 10));
 		showNorth();
 		showCenter();
-
 		setSize(400, 500);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,7 +45,7 @@ public class test1 extends JFrame {
 		JTextField t1 = new JTextField(25);
 		t1.setEnabled(false);// 식에는 입력불가능
 		JLabel l2 = new JLabel("입력칸");
-		JTextField t2 = new JTextField(25);
+		t2 = new JTextField(25);// 유일하게 t2에만 입력이 가능하다
 		JLabel l3 = new JLabel("16진수");
 		JTextField t3 = new JTextField(25);
 		t3.setEnabled(false);// 입력불가능
@@ -114,6 +115,58 @@ public class test1 extends JFrame {
 		JButton b24 = new JButton("ce");
 
 		JPanel panel = new JPanel(new GridLayout(4, 6));
+
+		b1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t2.setText(t2.getText() + "7");
+			}
+		});
+		b2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t2.setText(t2.getText() + "8");
+			}
+		});
+		b3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t2.setText(t2.getText() + "9");
+			}
+		});
+		b7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t2.setText(t2.getText() + "4");
+			}
+		});
+		b8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t2.setText(t2.getText() + "5");
+			}
+		});
+		b9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t2.setText(t2.getText() + "6");
+			}
+		});
+		b13.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t2.setText(t2.getText() + "1");
+			}
+		});
+		b14.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t2.setText(t2.getText() + "2");
+			}
+		});
+		b15.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t2.setText(t2.getText() + "3");
+			}
+		});
+		b20.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t2.setText(t2.getText() + "0");
+			}
+		});
+		//0~9까지 숫자버튼 이벤트처리 
 
 		// 24개의 버튼(숫자와 연산키 넣고 4행6열로 만든다)
 		// 2024-10-17 : 최초생성
