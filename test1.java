@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 // 제목은 계산기
 // 결과를 16,10,8,2진수로 4가지 출력예쩡
 // 0~9까지 숫자,+-구분자,소수점,+,-,/,*,c,log10^x,x^2,=,문자한개삭제,펙토리얼,괄호(,),이렇게 해서 버튼24개 그리고
@@ -17,6 +18,11 @@ import javax.swing.JTextField;
 
 public class test1 extends JFrame {
 	private JTextField t2; // 입력칸을 멤버 변수로 선언
+	private JTextField t1; // 식을 멤버 변수로 선언
+	private double currentValue;// 처음에 입력한 값
+	private String operator;// 연산자 저장
+	private JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12;// 버튼들
+	private JButton b13, b14, b15, b16, b17, b18, b19, b20, b21, b22, b23, b24;// 버튼들
 
 	test1() {
 		setTitle("계산기");
@@ -42,7 +48,7 @@ public class test1 extends JFrame {
 		// 2024-10-17 : 최초생성
 
 		JLabel l1 = new JLabel("식");
-		JTextField t1 = new JTextField(25);
+		t1 = new JTextField(25);
 		t1.setEnabled(false);// 식에는 입력불가능
 		JLabel l2 = new JLabel("입력칸");
 		t2 = new JTextField(25);// 유일하게 t2에만 입력이 가능하다
@@ -63,9 +69,9 @@ public class test1 extends JFrame {
 		// 2024-10-17 : 최초생성
 
 		p1.add(l1);
-		p1.add(t1);
+		p1.add(t1);// 여기에는 식이 쓰여짐
 		p2.add(l2);
-		p2.add(t2);
+		p2.add(t2);// 입력칸
 		p3.add(l3);
 		p3.add(t3);
 		p4.add(l4);
@@ -89,30 +95,30 @@ public class test1 extends JFrame {
 	}
 
 	void showCenter() {
-		JButton b1 = new JButton("7");
-		JButton b2 = new JButton("8");
-		JButton b3 = new JButton("9");
-		JButton b4 = new JButton("+");
-		JButton b5 = new JButton("x!");
-		JButton b6 = new JButton("(");
-		JButton b7 = new JButton("4");
-		JButton b8 = new JButton("5");
-		JButton b9 = new JButton("6");
-		JButton b10 = new JButton("-");
-		JButton b11 = new JButton("logx");
-		JButton b12 = new JButton(")");
-		JButton b13 = new JButton("1");
-		JButton b14 = new JButton("2");
-		JButton b15 = new JButton("3");
-		JButton b16 = new JButton("/");
-		JButton b17 = new JButton("x^2");
-		JButton b18 = new JButton("c");
-		JButton b19 = new JButton("+/-");
-		JButton b20 = new JButton("0");
-		JButton b21 = new JButton(".");
-		JButton b22 = new JButton("*");
-		JButton b23 = new JButton("=");
-		JButton b24 = new JButton("ce");
+		b1 = new JButton("7");
+		b2 = new JButton("8");
+		b3 = new JButton("9");
+		b4 = new JButton("+");
+		b5 = new JButton("x!");
+		b6 = new JButton("(");
+		b7 = new JButton("4");
+		b8 = new JButton("5");
+		b9 = new JButton("6");
+		b10 = new JButton("-");
+		b11 = new JButton("logx");
+		b12 = new JButton(")");
+		b13 = new JButton("1");
+		b14 = new JButton("2");
+		b15 = new JButton("3");
+		b16 = new JButton("/");
+		b17 = new JButton("x^2");
+		b18 = new JButton("c");
+		b19 = new JButton("+/-");
+		b20 = new JButton("0");
+		b21 = new JButton(".");
+		b22 = new JButton("*");
+		b23 = new JButton("=");
+		b24 = new JButton("ce");
 
 		JPanel panel = new JPanel(new GridLayout(4, 6));
 
@@ -166,10 +172,10 @@ public class test1 extends JFrame {
 				t2.setText(t2.getText() + "0");
 			}
 		});
-		//0~9까지 숫자버튼 이벤트처리 
-
+		// 0~9까지 숫자버튼 이벤트처리
 		// 24개의 버튼(숫자와 연산키 넣고 4행6열로 만든다)
 		// 2024-10-17 : 최초생성
+		// 참고한 사이트:https://blog.naver.com/highkrs/220561780951
 
 		panel.add(b1);
 		panel.add(b2);
@@ -200,6 +206,41 @@ public class test1 extends JFrame {
 		// 보더레이아웃은 센터로 해서 만든다
 		// 2024-10-17 : 최초생성
 
+	}
+
+	private class ButtonClickListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			String command = e.getActionCommand();
+
+			if (Character.isDigit(command.charAt(0))) {
+				t2.setText(t2.getText() + command);
+			} else if (command.equals(".")) {
+				t2.setText(t2.getText() + ".");
+			} else if (command.equals("=")) {
+				double result = evaluateExpression(t2.getText());
+				t2.setText(Double.toString(result));
+			} else {
+				operator = command;
+				currentValue = Double.parseDouble(t2.getText());
+				t2.setText("");
+			}
+		}
+	}
+
+	private double evaluateExpression(String expression) {
+		double secondValue = Double.parseDouble(t2.getText());
+		switch (operator) {
+		case "+":
+			return currentValue + secondValue;
+		case "-":
+			return currentValue - secondValue;
+		case "*":
+			return currentValue * secondValue;
+		case "/":
+			return currentValue / secondValue;
+		default:
+			return secondValue;
+		}
 	}
 
 	public static void main(String[] args) {
