@@ -1,6 +1,7 @@
 package makingcomputer01;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
@@ -39,41 +40,42 @@ public class testtype1 extends JFrame {
 	int challenger; // 0,1,2,3,4 //4가지 상태 가진다 0은 평소 1은 더하기 2는 빼기 3은 곱하기 4는 빼기
 
 	testtype1() {
-		setTitle("테스트타입");
+		setTitle("마지막 계산기");
 		setLayout(new BorderLayout(10, 10));
 		showNorth();
 		showSouth();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(300, 400);
+		setSize(400, 300);
 		setVisible(true);
 	}
 
 	void showNorth() {
 		JPanel panel = new JPanel();
 		JPanel p1 = new JPanel(new GridLayout(2, 1));
-		l1 = new JLabel("식");
+		l1 = new JLabel("expression");
+		l1.setFont(new Font("Arial", Font.BOLD, 16));
 		a1 = new JTextArea();
 		a1.setEditable(false);
-
-		l2 = new JLabel("입력칸");
-		t1 = new JTextField(15);
-
+		a1.setFont(new Font("Arial", Font.PLAIN, 18));
+		l2 = new JLabel("input");
+		l2.setFont(new Font("Arial", Font.BOLD, 16));
+		t1 = new JTextField(10);
+		t1.setFont(new Font("Arial", Font.PLAIN, 18));
 		p1.add(l1);
 		p1.add(a1);
 		p1.add(l2);
 		p1.add(t1);
-
 		panel.add(p1);
 		add(panel, BorderLayout.NORTH);
-
 	}
 
 	void showSouth() {
 
 		JPanel panel = new JPanel();
-		JPanel p1 = new JPanel(new GridLayout(4, 4));
+		JPanel p1 = new JPanel(new GridLayout(4, 4, 10, 10));
 
 		b1 = new JButton("7");
+		b1.setFont(new Font("Arial", Font.BOLD, 20));
 		ActionListener button1 = e -> {
 			if (e.getSource() == b1) {
 				t1.setText(t1.getText() + "7");
@@ -81,6 +83,8 @@ public class testtype1 extends JFrame {
 		};
 		b1.addActionListener(button1);
 		b2 = new JButton("8");
+		b2.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button2 = e -> {
 			if (e.getSource() == b2) {
 				t1.setText(t1.getText() + "8");
@@ -88,6 +92,8 @@ public class testtype1 extends JFrame {
 		};
 		b2.addActionListener(button2);
 		b3 = new JButton("9");
+		b3.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button3 = e -> {
 			if (e.getSource() == b3) {
 				t1.setText(t1.getText() + "9");
@@ -96,6 +102,8 @@ public class testtype1 extends JFrame {
 		b3.addActionListener(button3);
 
 		b4 = new JButton("+");
+		b4.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button4 = e -> {
 			if (e.getSource() == b4) {
 				a1.setText(t1.getText() + "+");
@@ -107,6 +115,8 @@ public class testtype1 extends JFrame {
 		b4.addActionListener(button4);
 
 		b5 = new JButton("4");
+		b5.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button5 = e -> {
 			if (e.getSource() == b5) {
 				t1.setText(t1.getText() + "4");
@@ -115,6 +125,8 @@ public class testtype1 extends JFrame {
 		b5.addActionListener(button5);
 
 		b6 = new JButton("5");
+		b6.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button6 = e -> {
 			if (e.getSource() == b6) {
 				t1.setText(t1.getText() + "5");
@@ -123,6 +135,8 @@ public class testtype1 extends JFrame {
 		b6.addActionListener(button6);
 
 		b7 = new JButton("6");
+		b7.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button7 = e -> {
 			if (e.getSource() == b7) {
 				t1.setText(t1.getText() + "6");
@@ -131,6 +145,8 @@ public class testtype1 extends JFrame {
 		b7.addActionListener(button7);
 
 		b8 = new JButton("-");
+		b8.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button8 = e -> {
 			if (e.getSource() == b8) {
 				a1.setText(t1.getText() + "-");
@@ -142,6 +158,8 @@ public class testtype1 extends JFrame {
 		b8.addActionListener(button8);
 
 		b9 = new JButton("1");
+		b9.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button9 = e -> {
 			if (e.getSource() == b9) {
 				t1.setText(t1.getText() + "1");
@@ -150,6 +168,8 @@ public class testtype1 extends JFrame {
 		b9.addActionListener(button9);
 
 		b10 = new JButton("2");
+		b10.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button10 = e -> {
 			if (e.getSource() == b10) {
 				t1.setText(t1.getText() + "2");
@@ -158,6 +178,8 @@ public class testtype1 extends JFrame {
 		b10.addActionListener(button10);
 
 		b11 = new JButton("3");
+		b11.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button11 = e -> {
 			if (e.getSource() == b11) {
 				t1.setText(t1.getText() + "3");
@@ -166,6 +188,8 @@ public class testtype1 extends JFrame {
 		b11.addActionListener(button11);
 
 		b12 = new JButton("*");
+		b12.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button12 = e -> {
 			if (e.getSource() == b12) {
 				a1.setText(t1.getText() + "*");
@@ -177,6 +201,8 @@ public class testtype1 extends JFrame {
 		b12.addActionListener(button12);
 
 		b13 = new JButton("ce");// 이건초기화
+		b13.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button13 = e -> {
 			if (e.getSource() == b13) {
 				t1.setText("");
@@ -186,6 +212,8 @@ public class testtype1 extends JFrame {
 		b13.addActionListener(button13);
 
 		b14 = new JButton("0");
+		b14.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button14 = e -> {
 			if (e.getSource() == b14) {
 				t1.setText(t1.getText() + "0");
@@ -194,6 +222,8 @@ public class testtype1 extends JFrame {
 		b14.addActionListener(button14);
 
 		b15 = new JButton("=");
+		b15.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button15 = e -> {
 			if (e.getSource() == b15) {
 				num2 = Double.parseDouble(t1.getText());
@@ -217,6 +247,8 @@ public class testtype1 extends JFrame {
 		b15.addActionListener(button15);
 
 		b16 = new JButton("/");
+		b16.setFont(new Font("Arial", Font.BOLD, 20));
+
 		ActionListener button16 = e -> {
 			if (e.getSource() == b16) {
 				a1.setText(t1.getText() + "/");
