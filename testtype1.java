@@ -34,6 +34,11 @@ public class testtype1 extends JFrame {
 	JButton b14;// 계산버튼
 	JButton b15;// 계산버튼
 	JButton b16;// 계산버튼
+	JButton b20;// 계산버튼
+	JButton b21;// 계산버튼
+	JButton b22;// 계산버튼
+	JButton b23;// 계산버튼
+
 	double num1;
 	double num2;
 	double result;
@@ -45,7 +50,7 @@ public class testtype1 extends JFrame {
 		showNorth();
 		showSouth();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(400, 300);
+		setSize(400, 400);
 		setVisible(true);
 	}
 
@@ -72,7 +77,7 @@ public class testtype1 extends JFrame {
 	void showSouth() {
 
 		JPanel panel = new JPanel();
-		JPanel p1 = new JPanel(new GridLayout(4, 4, 10, 10));
+		JPanel p1 = new JPanel(new GridLayout(5, 4, 10, 10));
 
 		b1 = new JButton("7");
 		b1.setFont(new Font("Arial", Font.BOLD, 20));
@@ -200,7 +205,7 @@ public class testtype1 extends JFrame {
 		};
 		b12.addActionListener(button12);
 
-		b13 = new JButton("ce");// 이건초기화
+		b13 = new JButton("C");// 이건초기화
 		b13.setFont(new Font("Arial", Font.BOLD, 20));
 
 		ActionListener button13 = e -> {
@@ -259,26 +264,75 @@ public class testtype1 extends JFrame {
 		};
 		b16.addActionListener(button16);
 
+		b20 = new JButton("1/x");
+		b20.setFont(new Font("Arial", Font.BOLD, 20));
+
+		ActionListener button20 = e -> {
+			if (e.getSource() == b20) {
+
+				t1.setText(Double.toString(1 / Double.parseDouble(t1.getText())));
+			}
+		};
+		b20.addActionListener(button20);
+
+		b21 = new JButton("x^2");
+		b21.setFont(new Font("Arial", Font.BOLD, 20));
+
+		ActionListener button21 = e -> {
+			if (e.getSource() == b21) {
+				t1.setText(Double.toString((Double.parseDouble(t1.getText())) * (Double.parseDouble(t1.getText()))));
+			}
+		};
+		b21.addActionListener(button21);
+
+		b22 = new JButton(".");
+		b22.setFont(new Font("Arial", Font.BOLD, 20));
+
+		ActionListener button22 = e -> {
+			if (e.getSource() == b22) {
+				t1.setText(t1.getText() + ".");
+
+			}
+		};
+		b22.addActionListener(button22);
+
+		b23 = new JButton("+/-");
+		b23.setFont(new Font("Arial", Font.BOLD, 20));
+
+		ActionListener button23 = e -> {
+			if (e.getSource() == b23) {
+				t1.setText("-" + t1.getText());
+
+			}
+
+		};
+
+		b23.addActionListener(button23);
+
+		p1.add(b20);
+		p1.add(b21);
+		p1.add(b13);
+		p1.add(b4);
 		p1.add(b1);
 		p1.add(b2);
 		p1.add(b3);
-		p1.add(b4);
+		p1.add(b8);
 		p1.add(b5);
 		p1.add(b6);
 		p1.add(b7);
-		p1.add(b8);
+		p1.add(b12);
 		p1.add(b9);
 		p1.add(b10);
 		p1.add(b11);
-		p1.add(b12);
-		p1.add(b13);
-		p1.add(b14);
-		p1.add(b15);
 		p1.add(b16);
+		p1.add(b23);
+		p1.add(b14);
+		p1.add(b22);
+		p1.add(b15);
 
 		panel.add(p1);
 
-		add(panel, BorderLayout.SOUTH);
+		this.add(panel, BorderLayout.SOUTH);
 
 	}
 
